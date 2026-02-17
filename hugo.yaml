@@ -2,6 +2,22 @@ baseURL: "https://noid-linux.github.io/"
 languageCode: "en-us"
 title: "Noid Linux"
 
+menus:
+  main:
+    - name: Home
+      url: /
+      weight: 1
+    - name: Download
+      url: /download/
+      weight: 2
+    - name: Blog
+      url: /blog/
+      weight: 3
+
+markup:
+  highlight:
+    noClasses: false
+
 build:
   buildStats:
     enable: true

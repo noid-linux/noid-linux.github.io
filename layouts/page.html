@@ -1,10 +1,14 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-
-  {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
-  {{ $dateHuman := .Date | time.Format ":date_long" }}
-  <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
-
-  {{ .Content }}
-  {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+  <article>
+    <header class="mb-8 pb-6 border-b border-[#504945]">
+      <h1 class="text-3xl font-semibold tracking-tight mb-2">{{ .Title }}</h1>
+      {{ if not .Date.IsZero }}
+        <time class="text-[#a89984] text-sm font-mono">{{ .Date | time.Format "2006-01-02" }}</time>
+      {{ end }}
+    </header>
+	<div class="prose prose-invert max-w-none">
+	  {{ .Content }}
+	</div>
+    {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+  </article>
 {{ end }}

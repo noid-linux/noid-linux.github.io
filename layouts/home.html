@@ -1,9 +1,87 @@
 {{ define "main" }}
-  {{ .Content }}
-  {{ range site.RegularPages }}
-    <section>
-      <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-      {{ .Summary }}
-    </section>
+
+  {{/* Hero */}}
+  <section class="pt-4 pb-10 text-center">
+    <h1 class="text-4xl sm:text-5xl font-semibold tracking-tight mb-4">
+      Noid <span class="text-[#d79921]">Linux</span>
+    </h1>
+    <p class="text-[#a89984] text-lg max-w-xl mx-auto mb-8 leading-relaxed">
+      A minimal, opinionated Void Linux spin. Fast, clean, and ready to use — with a sane amount of bloat.
+    </p>
+    <div class="flex items-center justify-center gap-3 flex-wrap">
+      <a href="/download/" class="bg-[#d79921] hover:bg-[#b57614] text-[#1d2021] px-5 py-2.5 rounded-lg font-semibold text-sm transition-colors">
+        Download
+      </a>
+      <a href="https://tuxmate.ch-naseem.com" class="border border-[#504945] hover:border-[#d79921]/50 hover:text-[#d79921] text-[#a89984] px-5 py-2.5 rounded-lg font-medium text-sm transition-colors">
+        TuxMate
+      </a>
+      <a href="https://github.com/noid-linux" class="border border-[#504945] hover:border-[#d79921]/50 hover:text-[#d79921] text-[#a89984] px-5 py-2.5 rounded-lg font-medium text-sm transition-colors">
+        GitHub
+      </a>
+    </div>
+  </section>
+
+  <section class="py-10 border-t border-[#504945]">
+    <div class="rounded-xl border border-[#504945] bg-[#282828] overflow-hidden">
+		<img src="/img/screenshots/xfce.jpg" alt="Noid Linux XFCE desktop" class="w-full h-auto">
+    </div>
+    <p class="text-center text-[#a89984] text-xs font-mono mt-3">XFCE edition — default desktop</p>
+  </section>
+
+  {{/* Feature grid */}}
+  <section class="grid grid-cols-1 sm:grid-cols-3 gap-4 py-8 border-t border-[#504945]">
+	<div class="bg-[#282828] border border-[#504945] rounded-xl p-5 hover:border-[#d79921]/40 transition-colors">
+      <div class="w-10 h-10 mb-3">
+		<img src="https://raw.githubusercontent.com/calamares/calamares/calamares/src/branding/default/squid.png" alt="Calamares" width="40" height="40" class="w-full h-full object-contain">
+	  </div>
+      <h3 class="font-semibold text-sm mb-1 text-[#ebdbb2]">Calamares Installer</h3>
+      <p class="text-[#a89984] text-sm leading-relaxed">A familiar graphical installer for a smooth setup experience.</p>
+	</div>
+	<div class="bg-[#282828] border border-[#504945] rounded-xl p-5 hover:border-[#d79921]/40 transition-colors">
+	  <div class="w-10 h-10 mb-3">
+		<img src="https://raw.githubusercontent.com/kolunmi/bazaar/main/data/icons/hicolor/scalable/apps/io.github.kolunmi.Bazaar.svg" alt="Bazaar" width="40" height="40" class="w-full h-full object-contain">
+	  </div>
+      <h3 class="font-semibold text-sm mb-1 text-[#ebdbb2]">Flatpak & Bazaar</h3>
+      <p class="text-[#a89984] text-sm leading-relaxed">Flathub ready out of the box with Bazaar pre-installed as your app store.</p>
+	</div>
+<div class="bg-[#282828] border border-[#504945] rounded-xl p-5 hover:border-[#d79921]/40 transition-colors">
+	  <div class="flex flex-wrap gap-1.5 mb-3">
+		<img src="https://cdn.simpleicons.org/brave/d79921" alt="Brave" width="20" height="20" class="w-8 h-8 object-contain opacity-80 hover:opacity-100 transition-opacity">
+		<img src="https://cdn.simpleicons.org/librewolf/d79921" alt="LibreWolf" width="20" height="20" class="w-8 h-8 object-contain opacity-80 hover:opacity-100 transition-opacity">
+		<img src="https://cdn.simpleicons.org/spotify/d79921" alt="Spotify" width="20" height="20" class="w-8 h-8 object-contain opacity-80 hover:opacity-100 transition-opacity">
+		<img src="https://cdn.simpleicons.org/vscodium/d79921" alt="VSCodium" width="20" height="20" class="w-8 h-8 object-contain opacity-80 hover:opacity-100 transition-opacity">
+		<img src="https://cdn.simpleicons.org/obsidian/d79921" alt="Obsidian" width="20" height="20" class="w-8 h-8 object-contain opacity-80 hover:opacity-100 transition-opacity">
+		<img src="https://cdn.simpleicons.org/discord/d79921" alt="Discord" width="20" height="20" class="w-8 h-8 object-contain opacity-80 hover:opacity-100 transition-opacity">
+	  </div>
+      <h3 class="font-semibold text-sm mb-1 text-[#ebdbb2]">Custom XBPS Repo</h3>
+      <p class="text-[#a89984] text-sm leading-relaxed">Brave, LibreWolf, Spotify, VSCodium and more.
+      <a href="https://github.com/noid-linux/xbps-repo" target="_blank" rel="noopener"
+        class="inline-block mt-3 text-xs font-mono text-[#d79921] hover:underline">
+        Browse packages →
+      </a>
+	</div>
+  </section>
+
+  {{/* Latest blog posts */}}
+  {{ $posts := where site.RegularPages "Section" "blog" }}
+  {{ if $posts }}
+  <section class="py-8 border-t border-[#504945]">
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-lg font-semibold">Latest Posts</h2>
+      <a href="/blog/" class="text-[#d79921] text-sm hover:underline">All posts →</a>
+    </div>
+    {{ range first 3 $posts }}
+    <article class="py-4 border-b border-[#504945] last:border-0">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <a href="{{ .RelPermalink }}" class="font-medium hover:text-[#d79921] transition-colors">{{ .Title }}</a>
+          <p class="text-[#a89984] text-sm mt-1">{{ .Summary | truncate 120 }}</p>
+        </div>
+        <time class="text-[#a89984] text-xs font-mono whitespace-nowrap mt-1">{{ .Date | time.Format "2006-01-02" }}</time>
+      </div>
+    </article>
+    {{ end }}
+  </section>
   {{ end }}
+
 {{ end }}

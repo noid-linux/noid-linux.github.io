@@ -1,2 +1,7 @@
-<h1>{{ site.Title }}</h1>
-{{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+<div class="max-w-4xl mx-auto px-4 flex items-center justify-between h-14">
+  <a href="/" class="flex items-center gap-2 font-semibold text-[#ebdbb2] hover:opacity-80 transition-opacity">
+	<img src="/noidlogo.png" alt="Noid Linux" class="h-7 w-7 object-contain">
+    <span>noid<span class="text-[#d79921]">linux</span></span>
+  </a>
+  {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+</div>
