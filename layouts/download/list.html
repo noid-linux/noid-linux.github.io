@@ -1,0 +1,94 @@
+{{ define "main" }}
+  <header class="mb-10">
+    <h1 class="text-3xl font-semibold tracking-tight mb-2">Download</h1>
+    <p class="text-[#a89984]">Pick your desktop environment. Same solid Noid Linux base underneath.</p>
+  </header>
+
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+
+    {{/* XFCE — Flagship */}}
+    <div class="relative bg-[#282828] border border-[#d79921]/60 rounded-xl p-6 flex flex-col gap-4">
+      <div class="absolute -top-3 left-5">
+        <span class="bg-[#d79921] text-[#1d2021] text-xs font-bold px-2.5 py-0.5 rounded-full">Flagship</span>
+      </div>
+      <div class="w-12 h-12">
+        <img
+          src="https://cdn.simpleicons.org/xfce/d79921"
+          alt="XFCE logo"
+          width="48" height="48"
+          class="w-full h-full object-contain"
+        >
+      </div>
+      <div>
+        <h2 class="font-semibold text-lg">XFCE Edition</h2>
+        <p class="text-[#a89984] text-sm mt-1 leading-relaxed">Lightweight and snappy. The recommended choice for most users.</p>
+      </div>
+      <ul class="text-sm text-[#a89984] space-y-1 flex-1">
+        <li class="flex items-center gap-2"><span class="text-[#98971a]">✓</span> ~1.95 GB ISO</li>
+        <li class="flex items-center gap-2"><span class="text-[#98971a]">✓</span> Minimal RAM footprint</li>
+        <li class="flex items-center gap-2"><span class="text-[#98971a]">✓</span> Best for older hardware</li>
+      </ul>
+      <a href="https://download.ch-naseem.com/noid-xfce.iso" class="bg-[#d79921] hover:bg-[#b57614] text-[#1d2021] text-sm font-semibold px-4 py-2.5 rounded-lg transition-colors text-center">
+        Download XFCE
+      </a>
+    </div>
+
+    {{/* KDE */}}
+    <div class="bg-[#282828] border border-[#504945] rounded-xl p-6 flex flex-col gap-4 hover:border-[#d79921]/40 transition-colors">
+      <div class="w-12 h-12">
+        <img
+          src="https://cdn.simpleicons.org/kde/d79921"
+          alt="KDE logo"
+          width="48" height="48"
+          class="w-full h-full object-contain"
+        >
+      </div>
+      <div>
+        <h2 class="font-semibold text-lg">KDE Edition</h2>
+        <p class="text-[#a89984] text-sm mt-1 leading-relaxed">Feature-rich and highly customizable. Modern Plasma desktop.</p>
+      </div>
+      <ul class="text-sm text-[#a89984] space-y-1 flex-1">
+        <li class="flex items-center gap-2"><span class="text-[#98971a]">✓</span> ~2.38 GB ISO</li>
+        <li class="flex items-center gap-2"><span class="text-[#98971a]">✓</span> Plasma 6</li>
+        <li class="flex items-center gap-2"><span class="text-[#98971a]">✓</span> Highly themeable</li>
+      </ul>
+      <a href="https://download.ch-naseem.com/noid-kde.iso" class="border border-[#504945] hover:border-[#d79921]/50 hover:text-[#d79921] text-[#a89984] text-sm font-medium px-4 py-2.5 rounded-lg transition-colors text-center">
+        Download KDE
+      </a>
+    </div>
+
+    {{/* GNOME */}}
+    <div class="bg-[#282828] border border-[#504945] rounded-xl p-6 flex flex-col gap-4 hover:border-[#d79921]/40 transition-colors">
+      <div class="w-12 h-12">
+        <img
+          src="https://cdn.simpleicons.org/gnome/d79921"
+          alt="GNOME logo"
+          width="48" height="48"
+          class="w-full h-full object-contain"
+        >
+      </div>
+      <div>
+        <h2 class="font-semibold text-lg">GNOME Edition</h2>
+        <p class="text-[#a89984] text-sm mt-1 leading-relaxed">Clean and modern. Great workflow with touch & HiDPI support.</p>
+      </div>
+      <ul class="text-sm text-[#a89984] space-y-1 flex-1">
+        <li class="flex items-center gap-2"><span class="text-[#98971a]">✓</span> ~2.05 GB ISO</li>
+        <li class="flex items-center gap-2"><span class="text-[#98971a]">✓</span> GNOME 48</li>
+        <li class="flex items-center gap-2"><span class="text-[#98971a]">✓</span> HiDPI ready</li>
+      </ul>
+      <a href="https://download.ch-naseem.com/noid-gnome.iso" class="border border-[#504945] hover:border-[#d79921]/50 hover:text-[#d79921] text-[#a89984] text-sm font-medium px-4 py-2.5 rounded-lg transition-colors text-center">
+        Download GNOME
+      </a>
+    </div>
+
+  </div>
+
+  <div class="mt-8 bg-[#282828] border border-[#504945] rounded-xl p-5 text-sm text-[#a89984]">
+	<p class="font-mono text-xs text-[#d79921] mb-1">// verify</p>
+	<p class="mb-3">Check your download: <code class="font-mono bg-[#3c3836] px-1.5 py-0.5 rounded text-[#ebdbb2]">gpg --verify sha256sum.txt.gpg sha256sum.txt</code></p>
+	<div class="flex gap-3 font-mono text-xs">
+      <a href="https://download.ch-naseem.com/sha256sum.txt" class="text-[#d79921] hover:underline">sha256sum.txt</a>
+      <a href="https://download.ch-naseem.com/sha256sum.txt.gpg" class="text-[#d79921] hover:underline">sha256sum.txt.gpg</a>
+	</div>
+  </div>
+{{ end }}
