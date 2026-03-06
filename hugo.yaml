@@ -10,9 +10,12 @@ menus:
     - name: Download
       url: /download/
       weight: 2
+    - name: Packages
+      url: /packages/
+      weight: 3
     - name: Blog
       url: /blog/
-      weight: 3
+      weight: 4
 
 markup:
   highlight:
