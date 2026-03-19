@@ -2,5 +2,44 @@
 <meta name="viewport" content="width=device-width">
 <link rel="icon" type="image/png" href="/favicon.png">
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ printf "%s | %s" .Title site.Title }}{{ end }}</title>
+
+{{- $description := "" }}
+{{- if .Description }}
+  {{- $description = .Description }}
+{{- else if .IsHome }}
+  {{- $description = "A minimal, opinionated Void Linux spin. Fast, clean, and ready to use — with a sane amount of bloat." }}
+{{- else if .Summary }}
+  {{- $description = .Summary | truncate 160 | plainify }}
+{{- else }}
+  {{- $description = site.Title }}
+{{- end }}
+<meta name="description" content="{{ $description }}">
+
+{{- $ogImage := absURL "/img/screenshots/xfce.jpg" }}
+{{- if .Params.image }}
+  {{- $ogImage = absURL .Params.image }}
+{{- end }}
+
+{{- $ogTitle := site.Title }}
+{{- if not .IsHome }}
+  {{- $ogTitle = printf "%s | %s" .Title site.Title }}
+{{- end }}
+
+<meta property="og:site_name" content="{{ site.Title }}">
+<meta property="og:title" content="{{ $ogTitle }}">
+<meta property="og:description" content="{{ $description }}">
+<meta property="og:image" content="{{ $ogImage }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+{{- if .IsPage }}
+  <meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+  {{- with .Lastmod }}<meta property="article:modified_time" content="{{ .Format "2006-01-02T15:04:05Z07:00" }}">{{ end }}
+{{- end }}
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $ogTitle }}">
+<meta name="twitter:description" content="{{ $description }}">
+<meta name="twitter:image" content="{{ $ogImage }}">
+
 {{ partialCached "head/css.html" . }}
 {{ partialCached "head/js.html" . }}
