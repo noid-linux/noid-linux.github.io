@@ -23,7 +23,7 @@
 
   <section class="py-10 border-t border-[#504945]">
     <div class="rounded-xl border border-[#504945] bg-[#282828] overflow-hidden">
-		<img src="/img/screenshots/xfce.jpg" alt="Noid Linux XFCE desktop" class="w-full h-auto">
+		<img src="/img/screenshots/xfce.jpg" alt="Noid Linux XFCE desktop" class="w-full h-auto" loading="lazy">
     </div>
     <p class="text-center text-[#a89984] text-xs font-mono mt-3">XFCE edition — default desktop</p>
   </section>
@@ -64,24 +64,28 @@
 
   {{/* Latest blog posts */}}
   {{ $posts := where site.RegularPages "Section" "blog" }}
-  {{ if $posts }}
   <section class="py-8 border-t border-[#504945]">
-    <div class="flex items-center justify-between mb-4">
+	<div class="flex items-center justify-between mb-4">
       <h2 class="text-lg font-semibold">Latest Posts</h2>
       <a href="/blog/" class="text-[#d79921] text-sm hover:underline">All posts →</a>
-    </div>
+	</div>
+	{{ if $posts }}
     {{ range first 3 $posts }}
     <article class="py-4 border-b border-[#504945] last:border-0">
       <div class="flex items-start justify-between gap-4">
-        <div>
-          <a href="{{ .RelPermalink }}" class="font-medium hover:text-[#d79921] transition-colors">{{ .Title }}</a>
-          <p class="text-[#a89984] text-sm mt-1">{{ .Summary | truncate 120 }}</p>
+        <div class="text-[#a89984]">
+          <a href="{{ .RelPermalink }}" class="font-medium text-lg text-[#ebdbb2] hover:text-[#d79921] transition-colors">{{ .Title }}</a>
+          <p class="text-sm mt-1">{{ .Summary | truncate 120 }}</p>
         </div>
         <time class="text-[#a89984] text-xs font-mono whitespace-nowrap mt-1">{{ .Date | time.Format "2006-01-02" }}</time>
       </div>
     </article>
     {{ end }}
+	{{ else }}
+    <div class="bg-[#282828] border border-[#504945] rounded-xl p-6 text-center">
+      <p class="text-[#a89984] font-mono text-sm">// no posts yet</p>
+    </div>
+	{{ end }}
   </section>
-  {{ end }}
 
 {{ end }}

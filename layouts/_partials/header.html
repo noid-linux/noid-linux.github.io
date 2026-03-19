@@ -23,12 +23,12 @@
 {{/* Mobile drawer */}}
 <div id="nav-drawer" class="hidden md:hidden border-t border-[#504945]">
   <nav class="max-w-4xl mx-auto px-4 py-2 flex flex-col">
-    {{- range site.Menus.main }}
-      <a href="{{ .URL }}"
-        class="px-3 py-2.5 rounded-md text-sm font-medium text-[#a89984] hover:text-[#ebdbb2] hover:bg-[#3c3836] transition-colors">
-        {{ .Name }}
-      </a>
-    {{- end }}
+	{{- range site.Menus.main }}
+	  <a href="{{ .URL }}"
+	    class="{{ if or ($.IsMenuCurrent .Menu .) ($.HasMenuCurrent .Menu .) }}text-[#d79921] bg-[#d79921]/10{{ else }}text-[#a89984] hover:text-[#ebdbb2] hover:bg-[#3c3836]{{ end }} px-3 py-2.5 rounded-md text-sm font-medium transition-colors">
+	    {{ .Name }}
+	  </a>
+	{{- end }}
   </nav>
 </div>
 

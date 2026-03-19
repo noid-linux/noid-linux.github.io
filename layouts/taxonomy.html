@@ -1,7 +1,11 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-  {{ .Content }}
+  <header class="mb-8">
+    <h1 class="text-3xl font-semibold tracking-tight mb-2">{{ .Title }}</h1>
+    {{ with .Content }}<div class="text-[#a89984]">{{ . }}</div>{{ end }}
+  </header>
   {{ range .Pages }}
-    <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+    <article class="py-5 border-b border-[#504945] first:border-t">
+      <a href="{{ .RelPermalink }}" class="text-lg font-medium hover:text-[#d79921] transition-colors text-[#ebdbb2]">{{ .LinkTitle }}</a>
+    </article>
   {{ end }}
 {{ end }}
