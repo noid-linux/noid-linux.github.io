@@ -1,7 +1,59 @@
 <div class="max-w-4xl mx-auto px-4 flex items-center justify-between h-14">
-  <a href="/" class="flex items-center gap-2 font-semibold text-[#ebdbb2] hover:opacity-80 transition-opacity">
-	<img src="/noidlogo.png" alt="Noid Linux" class="h-7 w-7 object-contain">
+  <a href="/" class="flex items-center gap-2 font-semibold text-[#ebdbb2] hover:opacity-80 transition-opacity shrink-0">
+    <img src="/noidlogo.png" alt="Noid Linux" class="h-7 w-7 object-contain">
     <span>noid<span class="text-[#d79921]">linux</span></span>
   </a>
-  {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+
+  {{/* Desktop nav */}}
+  <div class="hidden md:block">
+    {{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+  </div>
+
+  {{/* Hamburger — mobile only */}}
+  <button id="nav-toggle"
+    class="md:hidden p-2 -mr-2 rounded-md text-[#a89984] hover:text-[#ebdbb2] hover:bg-[#3c3836] transition-colors"
+    aria-label="Toggle menu" aria-expanded="false">
+    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path id="icon-open" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+      <path id="icon-close" stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" class="hidden"/>
+    </svg>
+  </button>
 </div>
+
+{{/* Mobile drawer */}}
+<div id="nav-drawer" class="hidden md:hidden border-t border-[#504945]">
+  <nav class="max-w-4xl mx-auto px-4 py-2 flex flex-col">
+    {{- range site.Menus.main }}
+      <a href="{{ .URL }}"
+        class="px-3 py-2.5 rounded-md text-sm font-medium text-[#a89984] hover:text-[#ebdbb2] hover:bg-[#3c3836] transition-colors">
+        {{ .Name }}
+      </a>
+    {{- end }}
+  </nav>
+</div>
+
+<script>
+  (() => {
+    const toggle = document.getElementById('nav-toggle');
+    const drawer = document.getElementById('nav-drawer');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+
+    toggle.addEventListener('click', () => {
+      const isOpen = !drawer.classList.contains('hidden');
+      drawer.classList.toggle('hidden', isOpen);
+      iconOpen.classList.toggle('hidden', !isOpen);
+      iconClose.classList.toggle('hidden', isOpen);
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    drawer.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', () => {
+        drawer.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+        toggle.setAttribute('aria-expanded', 'false');
+      })
+    );
+  })();
+</script>
