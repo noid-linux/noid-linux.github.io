@@ -16,6 +16,9 @@ menus:
     - name: Blog
       url: /blog/
       weight: 4
+    - name: ❤️ Donate
+      url: /donate/
+      weight: 5
 
 markup:
   highlight:
