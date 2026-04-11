@@ -83,6 +83,39 @@
 
   </div>
 
+  {{/* Experimental variants */}}
+  <h2 class="text-lg font-semibold mt-10 mb-4">Experimental</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+
+    {{/* XFCE + Dinit */}}
+    <div class="relative bg-[#282828] border border-[#cc241d]/40 rounded-xl p-6 flex flex-col gap-4 hover:border-[#cc241d]/60 transition-colors">
+      <div class="absolute -top-3 left-5">
+        <span class="bg-[#cc241d] text-[#ebdbb2] text-xs font-bold px-2.5 py-0.5 rounded-full">Experimental</span>
+      </div>
+      <div class="w-12 h-12">
+        <img
+          src="https://cdn.simpleicons.org/xfce/d79921"
+          alt="XFCE logo"
+          width="48" height="48"
+          class="w-full h-full object-contain"
+        >
+      </div>
+      <div>
+        <h2 class="font-semibold text-lg">XFCE + Dinit</h2>
+        <p class="text-[#a89984] text-sm mt-1 leading-relaxed">XFCE with Dinit as the init system instead of Runit. For testing and feedback only.</p>
+      </div>
+      <ul class="text-sm text-[#a89984] space-y-1 flex-1">
+        <li class="flex items-center gap-2"><span class="text-[#98971a]">✓</span> Dinit init system</li>
+        <li class="flex items-center gap-2"><span class="text-[#98971a]">✓</span> Familiar XFCE desktop</li>
+        <li class="flex items-center gap-2"><span class="text-[#cc241d]">⚠</span> May have rough edges</li>
+      </ul>
+      <a href="https://download.ch-naseem.com/noid-xfce-dinit.iso" class="border border-[#cc241d]/50 hover:border-[#cc241d] hover:text-[#cc241d] text-[#a89984] text-sm font-medium px-4 py-2.5 rounded-lg transition-colors text-center">
+        Download XFCE + Dinit
+      </a>
+    </div>
+
+  </div>
+
   <div class="mt-8 bg-[#282828] border border-[#504945] rounded-xl p-5 text-sm text-[#a89984]">
 	<p class="font-mono text-xs text-[#d79921] mb-1">// verify</p>
 	<p class="mb-3">
