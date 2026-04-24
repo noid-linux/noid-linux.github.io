@@ -11,7 +11,7 @@
         <div class="flex items-start justify-between gap-4">
           <div class="flex-1 min-w-0 text-[#a89984] text-sm">
             <a href="{{ .RelPermalink }}" class="text-lg font-medium hover:text-[#d79921] transition-colors text-[#ebdbb2]">{{ .Title }}</a>
-            <p class="mt-1 leading-relaxed">{{ .Summary | truncate 160 }}</p>
+            <p class="mt-1 leading-relaxed">{{ .Description | truncate 160 }}</p>
           </div>
           <time class="text-[#a89984] text-xs font-mono whitespace-nowrap mt-0.5">{{ .Date | time.Format "2006-01-02" }}</time>
         </div>
